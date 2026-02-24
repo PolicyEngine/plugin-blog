@@ -125,7 +125,7 @@ const milestones: Milestone[] = [
     ),
   },
   {
-    date: 'May 2025',
+    date: 'Oct 2025',
     title: 'Claude Code launches with plugin support',
     body: (
       <>
