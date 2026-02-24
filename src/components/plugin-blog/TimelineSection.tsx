@@ -592,20 +592,54 @@ export const TimelineSection = () => {
         </div>
       </section>
 
-      {/* ===== CTA ===== */}
-      <section className="section section--teal section--no-border">
+      {/* ===== CTA + SETUP ===== */}
+      <section className="section section--no-border">
         <div className="container">
           <AnimatedSection>
-            <div className="cta-content">
-              <h2>Now It&rsquo;s Open Source</h2>
-              <p>
-                We built this for ourselves. Now we&rsquo;re making it public.
-                If your team has domain knowledge scattered across docs, wikis,
-                and tribal memory, a Claude Code plugin can consolidate it into
-                something an AI agent actually uses. Start with a few skills,
-                add agents for your key workflows, and let hooks enforce your
-                rules.
-              </p>
+            <h2>Open source &mdash; try it now</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>
+              We built this for ourselves and we&rsquo;re still actively
+              developing it. Now we&rsquo;re making it public. If your team has
+              domain knowledge scattered across docs, wikis, and tribal memory,
+              a Claude Code plugin can consolidate it into something an AI agent
+              actually uses.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <div className="setup-steps">
+              <h4 className="spaced-sans" style={{ color: 'var(--teal)', marginBottom: 16 }}>
+                Get started in 3 steps
+              </h4>
+              <div className="setup-step">
+                <span className="setup-number">1</span>
+                <div>
+                  <strong>Install Claude Code</strong>
+                  <p><code>npm install -g @anthropic-ai/claude-code</code></p>
+                </div>
+              </div>
+              <div className="setup-step">
+                <span className="setup-number">2</span>
+                <div>
+                  <strong>Add the plugin</strong>
+                  <p><code>claude plugins add PolicyEngine/policyengine-claude</code></p>
+                </div>
+              </div>
+              <div className="setup-step">
+                <span className="setup-number">3</span>
+                <div>
+                  <strong>Open any PolicyEngine repo and start working</strong>
+                  <p>
+                    The plugin auto-detects which repository you&rsquo;re in and
+                    loads the right skills, agents, and commands.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.15}>
+            <div style={{ textAlign: 'center', marginTop: 32 }}>
               <a
                 href="https://github.com/PolicyEngine/policyengine-claude"
                 className="cta-button"
