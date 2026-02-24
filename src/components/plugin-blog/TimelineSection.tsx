@@ -514,27 +514,62 @@ const milestones: Milestone[] = [
   },
   /* 9 — no date */
   {
-    title: 'Open source',
+    title: 'Open source — try it now',
     body: (
-      <div className="cta-content" style={{ textAlign: 'center' }}>
+      <>
         <p>
           We built this for ourselves and we&rsquo;re still actively
           developing it. Now we&rsquo;re making it public. If your team has
           domain knowledge scattered across docs, wikis, and tribal memory,
           a Claude Code plugin can consolidate it into something an AI agent
-          actually uses. Start with a few skills, add agents for your key
-          workflows, and let hooks enforce your rules.
+          actually uses.
         </p>
-        <a
-          href="https://github.com/PolicyEngine/policyengine-claude"
-          className="cta-button"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ marginTop: 16 }}
-        >
-          View on GitHub
-        </a>
-      </div>
+
+        <div className="setup-steps">
+          <h4 className="spaced-sans" style={{ color: 'var(--teal)', marginBottom: 16 }}>
+            Get started in 3 steps
+          </h4>
+          <div className="setup-step">
+            <span className="setup-number">1</span>
+            <div>
+              <strong>Install Claude Code</strong>
+              <p>
+                <code>npm install -g @anthropic-ai/claude-code</code>
+              </p>
+            </div>
+          </div>
+          <div className="setup-step">
+            <span className="setup-number">2</span>
+            <div>
+              <strong>Add the plugin</strong>
+              <p>
+                <code>claude plugins add PolicyEngine/policyengine-claude</code>
+              </p>
+            </div>
+          </div>
+          <div className="setup-step">
+            <span className="setup-number">3</span>
+            <div>
+              <strong>Open any PolicyEngine repo and start working</strong>
+              <p>
+                The plugin auto-detects which repository you&rsquo;re in and
+                loads the right skills, agents, and commands.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: 24 }}>
+          <a
+            href="https://github.com/PolicyEngine/policyengine-claude"
+            className="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on GitHub
+          </a>
+        </div>
+      </>
     ),
   },
 ];

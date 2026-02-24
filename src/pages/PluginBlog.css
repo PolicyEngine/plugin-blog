@@ -773,6 +773,56 @@
   color: var(--white);
 }
 
+/* ===== SETUP STEPS ===== */
+.pb .setup-steps {
+  margin: 24px 0;
+  padding: 28px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.pb .setup-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.pb .setup-step:last-child {
+  margin-bottom: 0;
+}
+
+.pb .setup-number {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.pb .setup-step strong {
+  color: var(--dark);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.pb .setup-step p {
+  margin: 0;
+}
+
+.pb .setup-step code {
+  font-size: 0.82em;
+}
+
 /* ===== FOOTER ===== */
 .pb .footer {
   background: var(--dark);
