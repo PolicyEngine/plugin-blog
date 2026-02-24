@@ -312,17 +312,23 @@ const milestones: Milestone[] = [
       <>
         <p>
           Opus 4.6 launched with agent teams&mdash;multiple agents
-          collaborating in parallel within a single session. This changed
-          what&rsquo;s possible. With <code>/encode-policy</code> already
-          working well, agent teams let us tackle the problems that remained:
-          large PDFs that exceeded context windows, and complex programs that
-          needed simultaneous research from multiple regulatory sources.
+          collaborating in parallel within a single session. With{' '}
+          <code>/encode-policy</code> already working well, agent teams
+          unlocked workflows that weren&rsquo;t feasible before. The biggest:
+          backdating historical policy. TANF programs have decades of
+          scattered regulatory documents&mdash;state plans, policy manuals,
+          administrative code&mdash;and reading them all exceeds any single
+          context window.
         </p>
         <p>
-          Now one agent reads the PDF while another researches comparable
-          programs. A third starts scaffolding parameters before the first is
-          even done reading. Speed increased dramatically&mdash;and the PDF
-          limitations that had blocked us were finally overcome.
+          Agent teams solved this by splitting the work: a discovery agent
+          finds historical PDFs, prep agents download and render them, and
+          multiple research agents read different documents in
+          parallel&mdash;communicating directly with each other, not through
+          a central coordinator. A separate agent cross-checks everything
+          against the Urban Institute&rsquo;s welfare rules database. This
+          made <code>/backdate-policy</code> possible and dramatically
+          expanded what a single session could accomplish.
         </p>
 
         {/* 3-command cards */}
