@@ -176,7 +176,6 @@
 .pb .hero-intro p {
   color: var(--text-secondary);
   margin-bottom: 16px;
-  max-width: 640px;
 }
 
 .pb .hero-intro strong {
