@@ -328,16 +328,6 @@ const milestones: Milestone[] = [
         {/* 3-command cards */}
         <div className="timeline-dark-block">
           <div className="accel-commands">
-            <div className="accel-card">
-              <div className="accel-timeframe spaced-sans">The Present</div>
-              <h3>
-                <code>/encode-policy</code>
-              </h3>
-              <p>
-                Codes a government program as it exists today&mdash;from legal
-                text to working, tested code.
-              </p>
-            </div>
             <div className="accel-card accel-card--wip">
               <div className="accel-timeframe spaced-sans">The Past</div>
               <h3>
@@ -348,6 +338,16 @@ const milestones: Milestone[] = [
                 analysis.
               </p>
               <span className="accel-badge spaced-sans">In development</span>
+            </div>
+            <div className="accel-card">
+              <div className="accel-timeframe spaced-sans">The Present</div>
+              <h3>
+                <code>/encode-policy</code>
+              </h3>
+              <p>
+                Codes a government program as it exists today&mdash;from legal
+                text to working, tested code.
+              </p>
             </div>
             <div className="accel-card accel-card--wip">
               <div className="accel-timeframe spaced-sans">The Future</div>
