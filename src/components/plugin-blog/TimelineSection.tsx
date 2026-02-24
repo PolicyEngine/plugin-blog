@@ -1,9 +1,5 @@
-import { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { AnimatedSection } from '../common/AnimatedSection';
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-type YTPlayer = any;
 
 /* ---------- sub-components ---------- */
 
@@ -25,67 +21,6 @@ const PipelineStep = ({
 );
 
 /* ---------- inline data ---------- */
-
-const stats = [
-  { number: '39', label: 'Skills across\n7 categories' },
-  { number: '30', label: 'Specialized\nagents' },
-  { number: '8', label: 'Orchestrated\ncommands' },
-  { number: '3', label: 'Hook types for\nenforcement' },
-  { number: '7', label: 'Plugin\nbundles' },
-];
-
-interface EcoLayer {
-  layer: string;
-  repos: string;
-  bundle: string;
-  agents: string;
-  commands: string[];
-}
-
-const layers: EcoLayer[] = [
-  {
-    layer: 'Country Models',
-    repos: 'us, uk, canada, il, ng + 4 more',
-    bundle: 'country-models',
-    agents: 'rules-engineer, test-creator, document-collector + 13 more',
-    commands: ['/encode-policy', '/review-pr', '/fix-pr', '/audit-state-tax'],
-  },
-  {
-    layer: 'API',
-    repos: 'api, api-v2, household-api',
-    bundle: 'api-development',
-    agents: 'api-reviewer',
-    commands: ['/review-pr', '/fix-pr', '/audit-state-tax'],
-  },
-  {
-    layer: 'Frontend',
-    repos: 'app, app-v2, calculators',
-    bundle: 'app-development',
-    agents: 'app-reviewer, 4 SEO checkers',
-    commands: ['/new-tool', '/audit-seo', '/review-pr'],
-  },
-  {
-    layer: 'Data Science',
-    repos: 'microdf, microimpute, microcalibrate, us-data, uk-data',
-    bundle: 'data-science',
-    agents: '\u2014',
-    commands: [],
-  },
-  {
-    layer: 'Analysis',
-    repos: 'crfb-tob-impacts, newsletters, dashboards',
-    bundle: 'analysis-tools',
-    agents: '\u2014',
-    commands: [],
-  },
-  {
-    layer: 'Content',
-    repos: 'marketing, social',
-    bundle: 'content',
-    agents: 'content-orchestrator, neutrality-reviewer',
-    commands: ['/generate-content'],
-  },
-];
 
 const ideas = [
   {
@@ -131,6 +66,34 @@ const lessons = [
   },
 ];
 
+const researcherCapabilities = [
+  {
+    title: 'Population-Level Impact Analysis',
+    paragraphs: [
+      'The analysis-tools plugin turns Claude into a microsimulation analyst. Point it at any tax or benefit reform and it runs population-level analysis using PolicyEngine\u2019s weighted survey data\u2014covering income, demographics, and household structure for the entire US population.',
+      'The result: cost estimates, revenue projections, and counts of who wins and who loses under a proposed change\u2014all generated from a plain-English description of a policy reform.',
+    ],
+  },
+  {
+    title: 'Distributional and Inequality Analysis',
+    paragraphs: [
+      'Beyond aggregate numbers, Claude breaks down impacts by income decile, calculates changes to the Gini coefficient, and measures effects on poverty rates. You get the full distributional picture\u2014who bears the cost and who receives the benefit\u2014without writing a single line of analysis code.',
+    ],
+  },
+  {
+    title: 'Congressional District Analysis',
+    paragraphs: [
+      'Using geographic microdata from HuggingFace datasets, Claude can map reform impacts to every congressional district. This turns abstract national estimates into localized numbers that matter for legislative strategy and constituent communication.',
+    ],
+  },
+  {
+    title: 'Dashboards and Visualizations',
+    paragraphs: [
+      'Claude doesn\u2019t just compute numbers\u2014it builds interactive tools. Streamlit dashboards, Plotly charts, and household calculators that let stakeholders explore reform scenarios themselves. The analysis becomes a shareable, interactive product.',
+    ],
+  },
+];
+
 /* ---------- timeline milestones (text only) ---------- */
 
 interface Milestone {
@@ -162,7 +125,7 @@ const milestones: Milestone[] = [
     ),
   },
   {
-    date: 'May 2025',
+    date: 'Oct 2025',
     title: 'Claude Code launches with plugin support',
     body: (
       <>
@@ -303,56 +266,6 @@ const milestones: Milestone[] = [
 /* ---------- component ---------- */
 
 export const TimelineSection = () => {
-  const playerRef = useRef<YTPlayer>(null);
-
-  useEffect(() => {
-    const w = window as any;
-
-    const loadAPI = () => {
-      if (w.YT && w.YT.Player) {
-        createPlayer();
-        return;
-      }
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      document.head.appendChild(tag);
-      w.onYouTubeIframeAPIReady = createPlayer;
-    };
-
-    const createPlayer = () => {
-      const el = document.getElementById('yt-player-container');
-      if (!el || playerRef.current) return;
-      playerRef.current = new w.YT.Player(el, {
-        width: '100%',
-        height: '100%',
-        videoId: 'Ke_J3pOdL8k',
-        playerVars: { start: 575, rel: 0 },
-        events: {
-          onStateChange: (e: any) => {
-            if (e.data === w.YT.PlayerState.PLAYING) pollEnd();
-          },
-        },
-      });
-    };
-
-    const pollEnd = () => {
-      if (!playerRef.current || !playerRef.current.getCurrentTime) return;
-      if (playerRef.current.getCurrentTime() >= 1125) {
-        playerRef.current.pauseVideo();
-        return;
-      }
-      requestAnimationFrame(pollEnd);
-    };
-
-    loadAPI();
-    return () => {
-      if (playerRef.current && playerRef.current.destroy) {
-        playerRef.current.destroy();
-        playerRef.current = null;
-      }
-    };
-  }, []);
-
   return (
     <>
       {/* ===== TIMELINE (text only) ===== */}
@@ -384,30 +297,11 @@ export const TimelineSection = () => {
         </div>
       </section>
 
-      {/* ===== WHAT WE BUILT (pipeline + stats + ecosystem) ===== */}
+      {/* ===== WHAT WE BUILT (pipeline only) ===== */}
       <section className="section section--light">
         <div className="container">
           <AnimatedSection>
             <h2>What We Built</h2>
-          </AnimatedSection>
-        </div>
-
-        {/* stats */}
-        <div className="container--wide">
-          <AnimatedSection>
-            <div className="stats-grid">
-              {stats.map((s) => (
-                <div className="stat-item" key={s.label}>
-                  <div className="stat-number">{s.number}</div>
-                  <div
-                    className="stat-label"
-                    dangerouslySetInnerHTML={{
-                      __html: s.label.replace('\n', '<br/>'),
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
           </AnimatedSection>
         </div>
 
@@ -445,119 +339,35 @@ export const TimelineSection = () => {
             </div>
           </AnimatedSection>
         </div>
-
-        {/* command cards */}
-        <div className="container">
-          <AnimatedSection>
-            <div className="accel-commands">
-              <div className="accel-card accel-card--wip">
-                <div className="accel-timeframe spaced-sans">The Past</div>
-                <h3><code>/backdate-policy</code></h3>
-                <p>
-                  Codes historical versions of a program, enabling retroactive
-                  analysis.
-                </p>
-                <span className="accel-badge spaced-sans">In development</span>
-              </div>
-              <div className="accel-card">
-                <div className="accel-timeframe spaced-sans">The Present</div>
-                <h3><code>/encode-policy</code></h3>
-                <p>
-                  Codes a government program as it exists today&mdash;from legal
-                  text to working, tested code.
-                </p>
-              </div>
-              <div className="accel-card accel-card--wip">
-                <div className="accel-timeframe spaced-sans">The Future</div>
-                <h3><code>/reform-policy</code></h3>
-                <p>
-                  Codes proposed policy changes and what-if scenarios before
-                  they&rsquo;re enacted.
-                </p>
-                <span className="accel-badge spaced-sans">In development</span>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-
-        {/* ecosystem */}
-        <div className="container">
-          <AnimatedSection>
-            <p className="ecosystem-intro">
-              The plugin adapts to whichever repository you open. Each layer of
-              the PolicyEngine ecosystem has its own plugin bundle, agents, and
-              commands.
-            </p>
-          </AnimatedSection>
-        </div>
-        <div className="container--full">
-          <AnimatedSection>
-            <div className="ecosystem-grid">
-              <div className="eco-row eco-row--header">
-                <div className="eco-cell">Layer</div>
-                <div className="eco-cell">Repos</div>
-                <div className="eco-cell">Plugin Bundle</div>
-                <div className="eco-cell">Key Agents</div>
-                <div className="eco-cell">Key Commands</div>
-              </div>
-              {layers.map((row) => (
-                <div className="eco-row" key={row.layer}>
-                  <div className="eco-cell eco-layer">{row.layer}</div>
-                  <div className="eco-cell">
-                    <span className="eco-repos">{row.repos}</span>
-                  </div>
-                  <div className="eco-cell">
-                    <code>{row.bundle}</code>
-                  </div>
-                  <div className="eco-cell">
-                    {row.agents === '\u2014' ? (
-                      <span className="eco-muted">{row.agents}</span>
-                    ) : (
-                      row.agents
-                    )}
-                  </div>
-                  <div className="eco-cell">
-                    {row.commands.length === 0 ? (
-                      <span className="eco-muted">&mdash;</span>
-                    ) : (
-                      row.commands.map((cmd) => (
-                        <div key={cmd}><code>{cmd}</code></div>
-                      ))
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
       </section>
 
-      {/* ===== VIDEO ===== */}
-      <section className="section section--gray">
-        <AnimatedSection>
-          <div className="container">
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem' }}>
-              Watch a walkthrough of how we built the plugin and see it in action
-              encoding a real government program.
-            </p>
-          </div>
-        </AnimatedSection>
-        <div className="container--wide">
+      {/* ===== WHAT RESEARCHERS CAN DO ===== */}
+      <section className="section">
+        <div className="container">
           <AnimatedSection>
-            <div className="video-wrapper">
-              <div id="yt-player-container" />
-            </div>
+            <h2>What Researchers Can Do</h2>
+            <p className="section-lead">
+              Beyond building the plugin, we focused on what policy researchers
+              actually need from an AI assistant. See our{' '}
+              <a
+                href="https://www.policyengine.org/us/encode-policy-multi-agent-ai"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                multi-agent AI workflow post
+              </a>{' '}
+              for a deep dive into how these capabilities work in practice.
+            </p>
           </AnimatedSection>
-          <p className="video-note">
-            Clip starts at 9:35 and ends at 18:45.{' '}
-            <a
-              href="https://www.youtube.com/watch?v=Ke_J3pOdL8k"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Watch the full video on YouTube &rarr;
-            </a>
-          </p>
+
+          {researcherCapabilities.map((cap) => (
+            <AnimatedSection key={cap.title} className="idea-block">
+              <h3 className="spaced-sans">{cap.title}</h3>
+              {cap.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </AnimatedSection>
+          ))}
         </div>
       </section>
 
@@ -592,54 +402,25 @@ export const TimelineSection = () => {
         </div>
       </section>
 
-      {/* ===== CTA + SETUP ===== */}
+      {/* ===== CTA ===== */}
       <section className="section section--no-border">
         <div className="container">
           <AnimatedSection>
-            <h2>Open source &mdash; try it now</h2>
+            <h2>Try it yourself</h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>
-              We built this for ourselves and we&rsquo;re still actively
-              developing it. Now we&rsquo;re making it public. If your team has
-              domain knowledge scattered across docs, wikis, and tribal memory,
-              a Claude Code plugin can consolidate it into something an AI agent
-              actually uses.
+              We built this for ourselves and we&rsquo;re making it public.
+              See what the plugin can do, or explore the source code.
             </p>
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <div className="setup-steps">
-              <h4 className="spaced-sans" style={{ color: 'var(--teal)', marginBottom: 16 }}>
-                Get started in 3 steps
-              </h4>
-              <div className="setup-step">
-                <span className="setup-number">1</span>
-                <div>
-                  <strong>Install Claude Code</strong>
-                  <p><code>npm install -g @anthropic-ai/claude-code</code></p>
-                </div>
-              </div>
-              <div className="setup-step">
-                <span className="setup-number">2</span>
-                <div>
-                  <strong>Add the plugin</strong>
-                  <p><code>claude plugins add PolicyEngine/policyengine-claude</code></p>
-                </div>
-              </div>
-              <div className="setup-step">
-                <span className="setup-number">3</span>
-                <div>
-                  <strong>Open any PolicyEngine repo and start working</strong>
-                  <p>
-                    The plugin auto-detects which repository you&rsquo;re in and
-                    loads the right skills, agents, and commands.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.15}>
-            <div style={{ textAlign: 'center', marginTop: 32 }}>
+            <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a
+                href="https://policyengine.org/us/claude-plugins"
+                className="cta-button"
+              >
+                See what it can do
+              </a>
               <a
                 href="https://github.com/PolicyEngine/policyengine-claude"
                 className="cta-button"
