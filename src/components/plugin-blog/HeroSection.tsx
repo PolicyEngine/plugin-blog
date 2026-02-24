@@ -7,10 +7,10 @@ export const HeroSection = () => (
         <span className="hero-label spaced-sans">Introducing</span>
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
-        <h1>The PolicyEngine Claude Code Plugin</h1>
+        <h1>How We Built AI-Powered Policy Analysis</h1>
       </AnimatedSection>
       <AnimatedSection delay={0.2}>
-        <p className="hero-subtitle">Domain expertise through structured context, not training</p>
+        <p className="hero-subtitle">The story of turning a general-purpose AI into a policy expert</p>
       </AnimatedSection>
       <AnimatedSection delay={0.35}>
         <div className="hero-intro">
@@ -25,6 +25,14 @@ export const HeroSection = () => (
               This is the story of how we turned a general-purpose AI into a
               domain expert.
             </em>
+          </p>
+          <p>
+            <a
+              href="https://policyengine.org/us/claude-plugins"
+              style={{ textDecoration: 'underline', fontWeight: 500 }}
+            >
+              See what researchers can do with it &rarr;
+            </a>
           </p>
         </div>
       </AnimatedSection>
