@@ -31,7 +31,7 @@ export const HeroSection = () => (
               href="https://policyengine.org/us/claude-plugins"
               style={{ textDecoration: 'underline', fontWeight: 500 }}
             >
-              See what researchers can do with it &rarr;
+              See how you can use what we built &rarr;
             </a>
           </p>
         </div>

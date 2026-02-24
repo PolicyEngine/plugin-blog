@@ -1,9 +1,5 @@
-import { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { AnimatedSection } from '../common/AnimatedSection';
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-type YTPlayer = any;
 
 /* ---------- sub-components ---------- */
 
@@ -270,56 +266,6 @@ const milestones: Milestone[] = [
 /* ---------- component ---------- */
 
 export const TimelineSection = () => {
-  const playerRef = useRef<YTPlayer>(null);
-
-  useEffect(() => {
-    const w = window as any;
-
-    const loadAPI = () => {
-      if (w.YT && w.YT.Player) {
-        createPlayer();
-        return;
-      }
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      document.head.appendChild(tag);
-      w.onYouTubeIframeAPIReady = createPlayer;
-    };
-
-    const createPlayer = () => {
-      const el = document.getElementById('yt-player-container');
-      if (!el || playerRef.current) return;
-      playerRef.current = new w.YT.Player(el, {
-        width: '100%',
-        height: '100%',
-        videoId: 'Ke_J3pOdL8k',
-        playerVars: { start: 575, rel: 0 },
-        events: {
-          onStateChange: (e: any) => {
-            if (e.data === w.YT.PlayerState.PLAYING) pollEnd();
-          },
-        },
-      });
-    };
-
-    const pollEnd = () => {
-      if (!playerRef.current || !playerRef.current.getCurrentTime) return;
-      if (playerRef.current.getCurrentTime() >= 1125) {
-        playerRef.current.pauseVideo();
-        return;
-      }
-      requestAnimationFrame(pollEnd);
-    };
-
-    loadAPI();
-    return () => {
-      if (playerRef.current && playerRef.current.destroy) {
-        playerRef.current.destroy();
-        playerRef.current = null;
-      }
-    };
-  }, []);
-
   return (
     <>
       {/* ===== TIMELINE (text only) ===== */}
@@ -395,35 +341,6 @@ export const TimelineSection = () => {
         </div>
       </section>
 
-      {/* ===== VIDEO ===== */}
-      <section className="section section--gray">
-        <AnimatedSection>
-          <div className="container">
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem' }}>
-              Watch a walkthrough of how we built the plugin and see it in action
-              encoding a real government program.
-            </p>
-          </div>
-        </AnimatedSection>
-        <div className="container--wide">
-          <AnimatedSection>
-            <div className="video-wrapper">
-              <div id="yt-player-container" />
-            </div>
-          </AnimatedSection>
-          <p className="video-note">
-            Clip starts at 9:35 and ends at 18:45.{' '}
-            <a
-              href="https://www.youtube.com/watch?v=Ke_J3pOdL8k"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Watch the full video on YouTube &rarr;
-            </a>
-          </p>
-        </div>
-      </section>
-
       {/* ===== WHAT RESEARCHERS CAN DO ===== */}
       <section className="section">
         <div className="container">
@@ -431,7 +348,15 @@ export const TimelineSection = () => {
             <h2>What Researchers Can Do</h2>
             <p className="section-lead">
               Beyond building the plugin, we focused on what policy researchers
-              actually need from an AI assistant.
+              actually need from an AI assistant. See our{' '}
+              <a
+                href="https://www.policyengine.org/us/encode-policy-multi-agent-ai"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                multi-agent AI workflow post
+              </a>{' '}
+              for a deep dive into how these capabilities work in practice.
             </p>
           </AnimatedSection>
 
