@@ -21,22 +21,9 @@ export const HeroSection = () => (
             regulation can produce wrong numbers for millions of households.
           </p>
           <p>
-            We needed our AI coding agent to understand all of it. So we built{' '}
-            <strong>policyengine-claude</strong>&mdash;a{' '}
-            <a
-              href="https://code.claude.com/docs/en/plugins"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Claude Code plugin
-            </a>{' '}
-            that packages our entire domain into something Claude can use at
-            runtime.
-          </p>
-          <p>
             <em>
-              No fine-tuning. No training data. Just structured knowledge,
-              specialized agents, and a few clever guardrails.
+              This is the story of how we turned a general-purpose AI into a
+              domain expert.
             </em>
           </p>
         </div>
