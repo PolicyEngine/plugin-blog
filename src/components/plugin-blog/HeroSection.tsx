@@ -4,13 +4,13 @@ export const HeroSection = () => (
   <header className="hero">
     <div className="container">
       <AnimatedSection>
-        <span className="hero-label spaced-sans">PolicyEngine + Claude Code</span>
+        <span className="hero-label spaced-sans">Introducing</span>
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
-        <h1>How We Turned Claude into a Policy Expert</h1>
+        <h1>The PolicyEngine Claude Code Plugin</h1>
       </AnimatedSection>
       <AnimatedSection delay={0.2}>
-        <p className="hero-subtitle">Without training a model</p>
+        <p className="hero-subtitle">Domain expertise through structured context, not training</p>
       </AnimatedSection>
       <AnimatedSection delay={0.35}>
         <div className="hero-intro">
