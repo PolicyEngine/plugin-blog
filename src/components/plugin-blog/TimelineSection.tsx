@@ -48,14 +48,14 @@ const layers: EcoLayer[] = [
     repos: 'us, uk, canada, il, ng + 4 more',
     bundle: 'country-models',
     agents: 'rules-engineer, test-creator, document-collector + 13 more',
-    commands: ['/encode-policy', '/review-pr', '/fix-pr', '/create-pr'],
+    commands: ['/encode-policy', '/review-pr', '/fix-pr', '/audit-state-tax'],
   },
   {
     layer: 'API',
     repos: 'api, api-v2, household-api',
     bundle: 'api-development',
     agents: 'api-reviewer',
-    commands: ['/review-pr', '/fix-pr', '/create-pr'],
+    commands: ['/review-pr', '/fix-pr', '/audit-state-tax'],
   },
   {
     layer: 'Frontend',
