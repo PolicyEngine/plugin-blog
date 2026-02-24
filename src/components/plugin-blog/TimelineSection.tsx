@@ -131,19 +131,18 @@ const lessons = [
   },
 ];
 
-/* ---------- milestone definitions ---------- */
+/* ---------- timeline milestones (text only) ---------- */
 
 interface Milestone {
-  date?: string;
+  date: string;
   title: string;
   body: ReactNode;
 }
 
 const milestones: Milestone[] = [
-  /* 1 — Feb 2025 */
   {
     date: 'Feb 2025',
-    title: 'Claude Code first release — we start using it',
+    title: 'Claude Code first release \u2014 we start using it',
     body: (
       <>
         <p>
@@ -162,7 +161,6 @@ const milestones: Milestone[] = [
       </>
     ),
   },
-  /* 2 — May 2025 */
   {
     date: 'May 2025',
     title: 'Claude Code launches with plugin support',
@@ -183,7 +181,6 @@ const milestones: Milestone[] = [
       </>
     ),
   },
-  /* 3 — Aug 2025 */
   {
     date: 'Aug 2025',
     title: 'First experiments \u2014 and first failures',
@@ -211,7 +208,6 @@ const milestones: Milestone[] = [
       </>
     ),
   },
-  /* 4 — Oct 2025 */
   {
     date: 'Oct 2025',
     title: 'Skills and agents take shape',
@@ -243,7 +239,6 @@ const milestones: Milestone[] = [
       </>
     ),
   },
-  /* 5 — Dec 2025 */
   {
     date: 'Dec 2025',
     title: 'Orchestrated commands chain it all together',
@@ -252,59 +247,20 @@ const milestones: Milestone[] = [
         <p>
           Individual agents are useful, but the real power comes from chaining
           them. We build <strong>orchestrated commands</strong>&mdash;multi-agent
-          pipelines that run end-to-end workflows.
-        </p>
-        <p>
+          pipelines that run end-to-end workflows.{' '}
           <code>/encode-policy</code> is the flagship: it takes a government
-          program from legal text to working, tested code. The pipeline sets
-          up an issue and PR, collects regulatory documents, hits a checkpoint
-          for human review, then fans out to create parameters, tests, and
-          variables in parallel. After that: organization checks, test-and-fix
-          loops, formatting, and a final regulatory review against the source
-          law.
+          program from legal text to working, tested code.
         </p>
         <p>
           We also build <code>/review-pr</code> for automated code review,{' '}
           <code>/fix-pr</code> to resolve CI failures, and{' '}
-          <code>/create-pr</code> for routine pull requests. Each command
-          encodes a workflow our team runs daily&mdash;now automated with
-          guardrails built in.
+          <code>/audit-state-tax</code> for tax implementation audits. Each
+          command encodes a workflow our team runs daily&mdash;now automated
+          with guardrails built in.
         </p>
-
-        {/* pipeline diagram */}
-        <div className="timeline-dark-block">
-          <div className="pipeline-intro">
-            Our most complex workflow chains 6+ agents across
-            8 phases&mdash;from reading the law to pushing a validated PR.{' '}
-            <a
-              href="https://www.policyengine.org/us/encode-policy-multi-agent-ai"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read the full blog post &rarr;
-            </a>
-          </div>
-          <div className="pipeline-label spaced-sans">
-            /encode-policy pipeline
-          </div>
-          <div className="pipeline">
-            <PipelineStep label="1. Issue & PR setup" />
-            <PipelineStep label="2. Document collection" />
-            <PipelineStep label="Checkpoint" checkpoint />
-            <PipelineStep label="3. Parameters → Tests + Variables ∥" />
-            <PipelineStep label="Checkpoint" checkpoint />
-            <PipelineStep label="4. Organization check" />
-            <PipelineStep label="5. Test & fix" />
-            <PipelineStep label="6. Format & push" />
-            <PipelineStep label="7. Regulatory review" />
-            <PipelineStep label="Checkpoint" checkpoint />
-            <span className="pipeline-step">8. Final summary</span>
-          </div>
-        </div>
       </>
     ),
   },
-  /* 6 — Feb 2026 */
   {
     date: 'Feb 2026',
     title: 'A new level',
@@ -315,261 +271,31 @@ const milestones: Milestone[] = [
           collaborating in parallel within a single session. With{' '}
           <code>/encode-policy</code> already working well, agent teams
           unlocked workflows that weren&rsquo;t feasible before. The biggest:
-          backdating historical policy. TANF programs have decades of
-          scattered regulatory documents&mdash;state plans, policy manuals,
-          administrative code&mdash;and reading them all exceeds any single
-          context window.
+          backdating historical policy.
         </p>
         <p>
           Agent teams solved this by splitting the work: a discovery agent
           finds historical PDFs, prep agents download and render them, and
           multiple research agents read different documents in
           parallel&mdash;communicating directly with each other, not through
-          a central coordinator. A separate agent cross-checks everything
-          against the Urban Institute&rsquo;s welfare rules database. This
-          made <code>/backdate-policy</code> possible and dramatically
-          expanded what a single session could accomplish.
-        </p>
-
-        {/* 3-command cards */}
-        <div className="timeline-dark-block">
-          <div className="accel-commands">
-            <div className="accel-card accel-card--wip">
-              <div className="accel-timeframe spaced-sans">The Past</div>
-              <h3>
-                <code>/backdate-policy</code>
-              </h3>
-              <p>
-                Codes historical versions of a program, enabling retroactive
-                analysis.
-              </p>
-              <span className="accel-badge spaced-sans">In development</span>
-            </div>
-            <div className="accel-card">
-              <div className="accel-timeframe spaced-sans">The Present</div>
-              <h3>
-                <code>/encode-policy</code>
-              </h3>
-              <p>
-                Codes a government program as it exists today&mdash;from legal
-                text to working, tested code.
-              </p>
-            </div>
-            <div className="accel-card accel-card--wip">
-              <div className="accel-timeframe spaced-sans">The Future</div>
-              <h3>
-                <code>/reform-policy</code>
-              </h3>
-              <p>
-                Codes proposed policy changes and what-if scenarios before
-                they&rsquo;re enacted.
-              </p>
-              <span className="accel-badge spaced-sans">In development</span>
-            </div>
-          </div>
-        </div>
-
-        <p>
-          The plugin went from a productivity tool to a full development
-          platform&mdash;covering past, present, and future policy.
-        </p>
-
-        {/* video intro */}
-        <p style={{ color: 'var(--text-secondary)', marginTop: 24 }}>
-          Watch a walkthrough of how we built the plugin and see it in action
-          encoding a real government program.
-        </p>
-
-        {/* YouTube embed — rendered by the component's useEffect */}
-        <div className="timeline-embed">
-          <div className="video-wrapper">
-            <div id="yt-player-container" />
-          </div>
-        </div>
-        <p className="video-note" style={{ margin: '20px 0 0', padding: 0 }}>
-          Clip starts at 9:35 and ends at 18:45.{' '}
-          <a
-            href="https://www.youtube.com/watch?v=Ke_J3pOdL8k"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Watch the full video on YouTube &rarr;
-          </a>
+          a central coordinator. This made <code>/backdate-policy</code>{' '}
+          possible and dramatically expanded what a single session could
+          accomplish.
         </p>
       </>
     ),
   },
-  /* 7 — Today */
   {
     date: 'Today',
-    title: 'What it looks like now — and what\u2019s next',
+    title: 'Still building',
     body: (
-      <>
-        <p>
-          These numbers keep growing. We&rsquo;re still building new skills,
-          agents, and commands every week&mdash;and not just for coding
-          policy. New workflows cover writing policy analysis, building
-          interactive dashboards, and generating content. The plugin is
-          expanding beyond implementation into every part of how we work.
-        </p>
-        {/* stats grid */}
-        <div className="timeline-embed">
-          <div className="stats-grid">
-            {stats.map((s) => (
-              <div className="stat-item" key={s.label}>
-                <div className="stat-number">{s.number}</div>
-                <div
-                  className="stat-label"
-                  dangerouslySetInnerHTML={{
-                    __html: s.label.replace('\n', '<br/>'),
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ecosystem table */}
-        <p style={{ marginTop: 32, color: 'var(--text-secondary)' }}>
-          The plugin adapts to whichever repository you open. Each layer of
-          the PolicyEngine ecosystem has its own plugin bundle, agents, and
-          commands.
-        </p>
-        <div className="timeline-embed">
-          <div className="ecosystem-grid">
-            <div className="eco-row eco-row--header">
-              <div className="eco-cell">Layer</div>
-              <div className="eco-cell">Repos</div>
-              <div className="eco-cell">Plugin Bundle</div>
-              <div className="eco-cell">Key Agents</div>
-              <div className="eco-cell">Key Commands</div>
-            </div>
-            {layers.map((row) => (
-              <div className="eco-row" key={row.layer}>
-                <div className="eco-cell eco-layer">{row.layer}</div>
-                <div className="eco-cell">
-                  <span className="eco-repos">{row.repos}</span>
-                </div>
-                <div className="eco-cell">
-                  <code>{row.bundle}</code>
-                </div>
-                <div className="eco-cell">
-                  {row.agents === '\u2014' ? (
-                    <span className="eco-muted">{row.agents}</span>
-                  ) : (
-                    row.agents
-                  )}
-                </div>
-                <div className="eco-cell">
-                  {row.commands.length === 0 ? (
-                    <span className="eco-muted">&mdash;</span>
-                  ) : (
-                    row.commands.map((cmd) => (
-                      <div key={cmd}><code>{cmd}</code></div>
-                    ))
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </>
-    ),
-  },
-  /* 8 — no date */
-  {
-    title: 'The ideas that made it work',
-    body: (
-      <>
-        {ideas.map((idea) => (
-          <div className="idea-block" key={idea.title}>
-            <h3 className="spaced-sans">{idea.title}</h3>
-            {idea.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
-        ))}
-
-        <h3
-          style={{
-            fontFamily: "'Roboto Serif', serif",
-            fontSize: '1.15rem',
-            color: 'var(--dark)',
-            marginTop: 40,
-            marginBottom: 16,
-          }}
-        >
-          What we learned
-        </h3>
-        {lessons.map((l) => (
-          <div className="lesson" key={l.bold}>
-            <p>
-              <strong>{l.bold}</strong>
-              {l.text}
-            </p>
-          </div>
-        ))}
-      </>
-    ),
-  },
-  /* 9 — no date */
-  {
-    title: 'Open source — try it now',
-    body: (
-      <>
-        <p>
-          We built this for ourselves and we&rsquo;re still actively
-          developing it. Now we&rsquo;re making it public. If your team has
-          domain knowledge scattered across docs, wikis, and tribal memory,
-          a Claude Code plugin can consolidate it into something an AI agent
-          actually uses.
-        </p>
-
-        <div className="setup-steps">
-          <h4 className="spaced-sans" style={{ color: 'var(--teal)', marginBottom: 16 }}>
-            Get started in 3 steps
-          </h4>
-          <div className="setup-step">
-            <span className="setup-number">1</span>
-            <div>
-              <strong>Install Claude Code</strong>
-              <p>
-                <code>npm install -g @anthropic-ai/claude-code</code>
-              </p>
-            </div>
-          </div>
-          <div className="setup-step">
-            <span className="setup-number">2</span>
-            <div>
-              <strong>Add the plugin</strong>
-              <p>
-                <code>claude plugins add PolicyEngine/policyengine-claude</code>
-              </p>
-            </div>
-          </div>
-          <div className="setup-step">
-            <span className="setup-number">3</span>
-            <div>
-              <strong>Open any PolicyEngine repo and start working</strong>
-              <p>
-                The plugin auto-detects which repository you&rsquo;re in and
-                loads the right skills, agents, and commands.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div style={{ textAlign: 'center', marginTop: 24 }}>
-          <a
-            href="https://github.com/PolicyEngine/policyengine-claude"
-            className="cta-button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on GitHub
-          </a>
-        </div>
-      </>
+      <p>
+        These numbers keep growing. We&rsquo;re still building new skills,
+        agents, and commands every week&mdash;and not just for coding
+        policy. New workflows cover writing policy analysis, building
+        interactive dashboards, and generating content. The plugin is
+        expanding beyond implementation into every part of how we work.
+      </p>
     ),
   },
 ];
@@ -578,9 +304,7 @@ const milestones: Milestone[] = [
 
 export const TimelineSection = () => {
   const playerRef = useRef<YTPlayer>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  /* YouTube player setup */
   useEffect(() => {
     const w = window as any;
 
@@ -589,19 +313,15 @@ export const TimelineSection = () => {
         createPlayer();
         return;
       }
-
       const tag = document.createElement('script');
       tag.src = 'https://www.youtube.com/iframe_api';
       document.head.appendChild(tag);
-
       w.onYouTubeIframeAPIReady = createPlayer;
     };
 
     const createPlayer = () => {
       const el = document.getElementById('yt-player-container');
       if (!el || playerRef.current) return;
-      containerRef.current = el as HTMLDivElement;
-
       playerRef.current = new w.YT.Player(el, {
         width: '100%',
         height: '100%',
@@ -625,7 +345,6 @@ export const TimelineSection = () => {
     };
 
     loadAPI();
-
     return () => {
       if (playerRef.current && playerRef.current.destroy) {
         playerRef.current.destroy();
@@ -635,34 +354,305 @@ export const TimelineSection = () => {
   }, []);
 
   return (
-    <section className="section section--no-border">
-      <div className="container">
-        <AnimatedSection>
-          <h2>The Story</h2>
-        </AnimatedSection>
+    <>
+      {/* ===== TIMELINE (text only) ===== */}
+      <section className="section section--no-border">
+        <div className="container">
+          <AnimatedSection>
+            <h2>The Story</h2>
+          </AnimatedSection>
 
-        <div className="timeline">
-          {milestones.map((m, i) => (
-            <AnimatedSection
-              key={m.title}
-              className="timeline-item"
-              delay={i * 0.05}
-            >
-              <div className="timeline-marker">
-                <div className="timeline-dot" />
-                {i < milestones.length - 1 && <div className="timeline-line" />}
-              </div>
-              <div className="timeline-content">
-                {m.date && (
+          <div className="timeline">
+            {milestones.map((m, i) => (
+              <AnimatedSection
+                key={m.title}
+                className="timeline-item"
+                delay={i * 0.05}
+              >
+                <div className="timeline-marker">
+                  <div className="timeline-dot" />
+                  {i < milestones.length - 1 && <div className="timeline-line" />}
+                </div>
+                <div className="timeline-content">
                   <span className="timeline-date spaced-sans">{m.date}</span>
-                )}
-                <h3>{m.title}</h3>
-                {m.body}
+                  <h3>{m.title}</h3>
+                  {m.body}
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== WHAT WE BUILT (pipeline + stats + ecosystem) ===== */}
+      <section className="section section--light">
+        <div className="container">
+          <AnimatedSection>
+            <h2>What We Built</h2>
+          </AnimatedSection>
+        </div>
+
+        {/* stats */}
+        <div className="container--wide">
+          <AnimatedSection>
+            <div className="stats-grid">
+              {stats.map((s) => (
+                <div className="stat-item" key={s.label}>
+                  <div className="stat-number">{s.number}</div>
+                  <div
+                    className="stat-label"
+                    dangerouslySetInnerHTML={{
+                      __html: s.label.replace('\n', '<br/>'),
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+
+        {/* pipeline */}
+        <div className="container--wide">
+          <AnimatedSection>
+            <div className="pipeline-block">
+              <p className="pipeline-intro">
+                Our most complex workflow chains 6+ agents across
+                8 phases&mdash;from reading the law to pushing a validated PR.{' '}
+                <a
+                  href="https://www.policyengine.org/us/encode-policy-multi-agent-ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read the full blog post &rarr;
+                </a>
+              </p>
+              <div className="pipeline-label spaced-sans">
+                /encode-policy pipeline
               </div>
+              <div className="pipeline">
+                <PipelineStep label="1. Issue & PR setup" />
+                <PipelineStep label="2. Document collection" />
+                <PipelineStep label="Checkpoint" checkpoint />
+                <PipelineStep label="3. Parameters → Tests + Variables ∥" />
+                <PipelineStep label="Checkpoint" checkpoint />
+                <PipelineStep label="4. Organization check" />
+                <PipelineStep label="5. Test & fix" />
+                <PipelineStep label="6. Format & push" />
+                <PipelineStep label="7. Regulatory review" />
+                <PipelineStep label="Checkpoint" checkpoint />
+                <span className="pipeline-step">8. Final summary</span>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+
+        {/* command cards */}
+        <div className="container">
+          <AnimatedSection>
+            <div className="accel-commands">
+              <div className="accel-card accel-card--wip">
+                <div className="accel-timeframe spaced-sans">The Past</div>
+                <h3><code>/backdate-policy</code></h3>
+                <p>
+                  Codes historical versions of a program, enabling retroactive
+                  analysis.
+                </p>
+                <span className="accel-badge spaced-sans">In development</span>
+              </div>
+              <div className="accel-card">
+                <div className="accel-timeframe spaced-sans">The Present</div>
+                <h3><code>/encode-policy</code></h3>
+                <p>
+                  Codes a government program as it exists today&mdash;from legal
+                  text to working, tested code.
+                </p>
+              </div>
+              <div className="accel-card accel-card--wip">
+                <div className="accel-timeframe spaced-sans">The Future</div>
+                <h3><code>/reform-policy</code></h3>
+                <p>
+                  Codes proposed policy changes and what-if scenarios before
+                  they&rsquo;re enacted.
+                </p>
+                <span className="accel-badge spaced-sans">In development</span>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+
+        {/* ecosystem */}
+        <div className="container">
+          <AnimatedSection>
+            <p className="ecosystem-intro">
+              The plugin adapts to whichever repository you open. Each layer of
+              the PolicyEngine ecosystem has its own plugin bundle, agents, and
+              commands.
+            </p>
+          </AnimatedSection>
+        </div>
+        <div className="container--full">
+          <AnimatedSection>
+            <div className="ecosystem-grid">
+              <div className="eco-row eco-row--header">
+                <div className="eco-cell">Layer</div>
+                <div className="eco-cell">Repos</div>
+                <div className="eco-cell">Plugin Bundle</div>
+                <div className="eco-cell">Key Agents</div>
+                <div className="eco-cell">Key Commands</div>
+              </div>
+              {layers.map((row) => (
+                <div className="eco-row" key={row.layer}>
+                  <div className="eco-cell eco-layer">{row.layer}</div>
+                  <div className="eco-cell">
+                    <span className="eco-repos">{row.repos}</span>
+                  </div>
+                  <div className="eco-cell">
+                    <code>{row.bundle}</code>
+                  </div>
+                  <div className="eco-cell">
+                    {row.agents === '\u2014' ? (
+                      <span className="eco-muted">{row.agents}</span>
+                    ) : (
+                      row.agents
+                    )}
+                  </div>
+                  <div className="eco-cell">
+                    {row.commands.length === 0 ? (
+                      <span className="eco-muted">&mdash;</span>
+                    ) : (
+                      row.commands.map((cmd) => (
+                        <div key={cmd}><code>{cmd}</code></div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ===== VIDEO ===== */}
+      <section className="section section--gray">
+        <AnimatedSection>
+          <div className="container">
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem' }}>
+              Watch a walkthrough of how we built the plugin and see it in action
+              encoding a real government program.
+            </p>
+          </div>
+        </AnimatedSection>
+        <div className="container--wide">
+          <AnimatedSection>
+            <div className="video-wrapper">
+              <div id="yt-player-container" />
+            </div>
+          </AnimatedSection>
+          <p className="video-note">
+            Clip starts at 9:35 and ends at 18:45.{' '}
+            <a
+              href="https://www.youtube.com/watch?v=Ke_J3pOdL8k"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Watch the full video on YouTube &rarr;
+            </a>
+          </p>
+        </div>
+      </section>
+
+      {/* ===== IDEAS + LESSONS ===== */}
+      <section className="section">
+        <div className="container">
+          <AnimatedSection>
+            <h2>The Ideas That Made It Work</h2>
+          </AnimatedSection>
+
+          {ideas.map((idea) => (
+            <AnimatedSection key={idea.title} className="idea-block">
+              <h3 className="spaced-sans">{idea.title}</h3>
+              {idea.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </AnimatedSection>
+          ))}
+
+          <AnimatedSection>
+            <h2 style={{ marginTop: 48 }}>What We Learned</h2>
+          </AnimatedSection>
+
+          {lessons.map((l) => (
+            <AnimatedSection key={l.bold} className="lesson">
+              <p>
+                <strong>{l.bold}</strong>
+                {l.text}
+              </p>
             </AnimatedSection>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* ===== CTA + SETUP ===== */}
+      <section className="section section--teal section--no-border">
+        <div className="container">
+          <AnimatedSection>
+            <div className="cta-content">
+              <h2>Open Source &mdash; Try It Now</h2>
+              <p>
+                We built this for ourselves and we&rsquo;re still actively
+                developing it. If your team has domain knowledge scattered
+                across docs, wikis, and tribal memory, a Claude Code plugin
+                can consolidate it into something an AI agent actually uses.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <div className="setup-steps setup-steps--dark">
+              <h4 className="spaced-sans" style={{ color: 'var(--white)', marginBottom: 16 }}>
+                Get started in 3 steps
+              </h4>
+              <div className="setup-step">
+                <span className="setup-number">1</span>
+                <div>
+                  <strong>Install Claude Code</strong>
+                  <p><code>npm install -g @anthropic-ai/claude-code</code></p>
+                </div>
+              </div>
+              <div className="setup-step">
+                <span className="setup-number">2</span>
+                <div>
+                  <strong>Add the plugin</strong>
+                  <p><code>claude plugins add PolicyEngine/policyengine-claude</code></p>
+                </div>
+              </div>
+              <div className="setup-step">
+                <span className="setup-number">3</span>
+                <div>
+                  <strong>Open any PolicyEngine repo and start working</strong>
+                  <p>
+                    The plugin auto-detects which repository you&rsquo;re in and
+                    loads the right skills, agents, and commands.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.15}>
+            <div style={{ textAlign: 'center', marginTop: 32 }}>
+              <a
+                href="https://github.com/PolicyEngine/policyengine-claude"
+                className="cta-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+    </>
   );
 };

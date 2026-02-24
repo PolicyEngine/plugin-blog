@@ -440,74 +440,64 @@
   margin-bottom: 0;
 }
 
-/* ===== TIMELINE INSET BLOCK (embedded highlight islands) ===== */
-.pb .timeline-dark-block {
+/* ===== PIPELINE BLOCK (light context) ===== */
+.pb .pipeline-block {
   background: var(--teal-bg);
   border: 1px solid var(--teal-border);
-  color: var(--text);
   padding: 28px 28px 24px;
   border-radius: var(--radius);
-  margin: 20px 0;
+  margin: 32px 0;
 }
 
-.pb .timeline-dark-block a {
-  color: var(--teal);
-}
-
-.pb .timeline-dark-block .pipeline-intro {
+.pb .pipeline-block .pipeline-intro {
   color: var(--text-secondary);
   margin-bottom: 20px;
   font-size: 1rem;
   max-width: 640px;
 }
 
-.pb .timeline-dark-block .pipeline-label {
+.pb .pipeline-block .pipeline-label {
   margin-bottom: 16px;
   color: var(--text-muted);
 }
 
-.pb .timeline-dark-block .pipeline-step {
+.pb .pipeline-block .pipeline-step {
   background: var(--white);
   color: var(--text-secondary);
   border-color: var(--border);
 }
 
-.pb .timeline-dark-block .pipeline-step--checkpoint {
+.pb .pipeline-block .pipeline-step--checkpoint {
   background: rgba(45, 139, 135, 0.1);
   color: var(--teal);
   border-color: var(--teal-border);
 }
 
-.pb .timeline-dark-block .pipeline-arrow {
+.pb .pipeline-block .pipeline-arrow {
   color: var(--border);
 }
 
-.pb .timeline-dark-block .accel-card {
+/* ===== ACCEL CARDS (light context) ===== */
+.pb .section--light .accel-card {
   background: var(--white);
   border-color: var(--border);
 }
 
-.pb .timeline-dark-block .accel-card h3 {
+.pb .section--light .accel-card h3 {
   color: var(--dark);
 }
 
-.pb .timeline-dark-block .accel-card p {
+.pb .section--light .accel-card p {
   color: var(--text-secondary);
 }
 
-.pb .timeline-dark-block .accel-timeframe {
+.pb .section--light .accel-timeframe {
   color: var(--teal);
 }
 
-.pb .timeline-dark-block .accel-badge {
+.pb .section--light .accel-badge {
   color: var(--text-muted);
   border-color: var(--border);
-}
-
-/* ===== TIMELINE EMBED (wider breakout) ===== */
-.pb .timeline-embed {
-  margin: 20px -80px;
-  width: calc(100% + 160px);
 }
 
 /* ===== KEY IDEAS ===== */
@@ -823,6 +813,32 @@
 
 .pb .setup-step code {
   font-size: 0.82em;
+}
+
+.pb .setup-steps--dark {
+  background: rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.15);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pb .setup-steps--dark strong {
+  color: var(--white);
+}
+
+.pb .setup-steps--dark p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.pb .setup-steps--dark code {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.pb .setup-steps--dark .setup-number {
+  background: var(--white);
+  color: var(--teal);
 }
 
 /* ===== FOOTER ===== */
