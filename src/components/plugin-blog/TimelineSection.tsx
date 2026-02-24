@@ -385,17 +385,17 @@ const milestones: Milestone[] = [
           <div className="video-wrapper">
             <div id="yt-player-container" />
           </div>
-          <p className="video-note" style={{ margin: '20px 0 0', padding: 0 }}>
-            Clip starts at 9:35 and ends at 18:45.{' '}
-            <a
-              href="https://www.youtube.com/watch?v=Ke_J3pOdL8k"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Watch the full video on YouTube &rarr;
-            </a>
-          </p>
         </div>
+        <p className="video-note" style={{ margin: '20px 0 0', padding: 0 }}>
+          Clip starts at 9:35 and ends at 18:45.{' '}
+          <a
+            href="https://www.youtube.com/watch?v=Ke_J3pOdL8k"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Watch the full video on YouTube &rarr;
+          </a>
+        </p>
       </>
     ),
   },
