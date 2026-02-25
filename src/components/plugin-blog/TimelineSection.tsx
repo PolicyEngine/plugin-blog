@@ -111,13 +111,12 @@ const milestones: Milestone[] = [
         <p>
           Anthropic releases Claude Code, a CLI coding agent. We adopt it
           immediately and discover it&rsquo;s remarkably useful for
-          research&mdash;like having the Claude web chat but right in your
-          terminal. We stop switching to the browser and start doing everything
-          from the command line.
+          research&mdash;having the Claude web chat but right in your
+          terminal. We slowly migrate to the command line from the browser.
         </p>
         <p>
-          For coding, the early wins are the repetitive tasks nobody wants to
-          do by hand: renaming files, updating import paths, bulk reformatting.
+          For coding, the early wins are the repetitive tasks: renaming
+          files, updating import paths, bulk reformatting.
           Claude handles them instantly. It&rsquo;s not writing policy logic
           yet&mdash;but it&rsquo;s already saving hours a week.
         </p>
@@ -125,33 +124,13 @@ const milestones: Milestone[] = [
     ),
   },
   {
-    date: 'Oct 2025',
-    title: 'Claude Code launches with plugin support',
-    body: (
-      <>
-        <p>
-          Anthropic adds an open plugin architecture to Claude Code. Plugins
-          let you package domain knowledge, custom agents, and automated
-          workflows into something Claude loads at runtime. No fine-tuning, no
-          training data.
-        </p>
-        <p>
-          We see the potential immediately. PolicyEngine models tax and benefit
-          policy across 40+ repositories, thousands of parameters, and dozens
-          of government programs. Every implementation has to match real
-          legislation. We need an AI that can navigate all of it.
-        </p>
-      </>
-    ),
-  },
-  {
-    date: 'Aug 2025',
+    date: 'Apr 2025',
     title: 'First experiments \u2014 and first failures',
     body: (
       <>
         <p>
           We point Claude at our codebase and start asking it to implement
-          government programs. The results are rough. It hardcodes dollar
+          government programs. The results are mixed. It hardcodes dollar
           amounts that should live in parameter files. It mixes up federal and
           state logic. It skips regulatory sources and guesses at eligibility
           rules.
@@ -160,19 +139,18 @@ const milestones: Milestone[] = [
           A typical failure: Claude implements a state TANF program by copying
           patterns from another state, changing a few numbers, and calling it
           done. The code compiles, the tests pass&mdash;but the income
-          thresholds are wrong because it never read the actual state
-          regulation.
+          thresholds are wrong because it never read the primary sources.
         </p>
         <p>
           The model is capable. The problem is context. Claude doesn&rsquo;t
           know how PolicyEngine is structured, what our conventions are, or
-          that the law is the source of truth&mdash;not existing code.
+          that the law is the source of truth.
         </p>
       </>
     ),
   },
   {
-    date: 'Oct 2025',
+    date: 'Aug 2025',
     title: 'Skills and agents take shape',
     body: (
       <>
@@ -198,6 +176,26 @@ const milestones: Milestone[] = [
           The difference is immediate. Claude stops guessing. It reads the
           skill file, understands the convention, and follows the pattern.
           Error rates on parameter structure drop to near zero.
+        </p>
+      </>
+    ),
+  },
+  {
+    date: 'Oct 2025',
+    title: 'Claude Code launches with plugin support',
+    body: (
+      <>
+        <p>
+          Anthropic adds an open plugin architecture to Claude Code. Plugins
+          let you package domain knowledge, custom agents, and automated
+          workflows into something Claude loads at runtime. No fine-tuning, no
+          training data.
+        </p>
+        <p>
+          This changes how we work. PolicyEngine models tax and benefit
+          policy across 40+ repositories, thousands of parameters, and dozens
+          of government programs. Every implementation has to match real
+          legislation. We need an AI that can navigate all of it.
         </p>
       </>
     ),
