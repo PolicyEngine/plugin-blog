@@ -21,12 +21,6 @@ export const HeroSection = () => (
             regulation can produce wrong numbers for millions of households.
           </p>
           <p>
-            <em>
-              This is the story of how we turned a general-purpose AI into a
-              domain expert.
-            </em>
-          </p>
-          <p>
             <a
               href="https://policyengine.org/us/claude-plugins"
               style={{ textDecoration: 'underline', fontWeight: 500 }}
