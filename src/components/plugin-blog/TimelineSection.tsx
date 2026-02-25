@@ -22,75 +22,30 @@ const PipelineStep = ({
 
 /* ---------- inline data ---------- */
 
-const ideas = [
+const takeaways = [
   {
-    title: "Documentation Pointers, Not Stale Examples",
-    paragraphs: [
-      "Most knowledge bases rot. You write example code, the codebase evolves, and now your examples are wrong.",
-      "We solved this by having skills point to live code in the active repository instead of hardcoding examples. When Claude reads a skill, it gets instructions like \u201clook at the current implementation in the relevant country model repo\u201d\u2014always fresh, always branch-aware, zero maintenance.",
-    ],
+    bold: "Point to live code, not stale examples.",
+    text: " Skills reference the active repo instead of hardcoding examples\u2014always fresh, zero maintenance.",
   },
   {
-    title: "Legal Code Is the Source of Truth",
-    paragraphs: [
-      "When implementing a government benefit program, the temptation is to copy what another jurisdiction does and tweak it. Our agents are instructed differently: read the actual regulation first, understand what the law says, then implement exactly that. Pattern-matching across jurisdictions is a tool, not a shortcut.",
-    ],
+    bold: "The law is the source of truth.",
+    text: " Agents read the actual regulation first, not patterns from other jurisdictions.",
   },
   {
-    title: "Zero Hard-Coding",
-    paragraphs: [
-      "Every dollar amount, every threshold, every phase-out rate lives in a parameter file\u2014never as a magic number in code. This is what makes PolicyEngine work: you can simulate policy reforms by changing parameters alone. Our agents enforce this automatically.",
-    ],
+    bold: "Zero hard-coding.",
+    text: " Every dollar amount and threshold lives in a parameter file\u2014agents enforce this automatically.",
   },
   {
-    title: "Claude Policing Claude",
-    paragraphs: [
-      "We use Claude Code hooks\u2014prompts that run before or after tool calls\u2014to enforce architectural rules. When Claude writes a file, another Claude prompt checks whether tax logic ended up somewhere it shouldn\u2019t be. If it did, the write gets blocked.",
-      "The same mechanism auto-detects which PolicyEngine repo you\u2019re in and routes you to the right specialized agents. Open Claude Code in any PolicyEngine repository and it knows which agents to load\u2014country models get the rules-engineer, the API repos get the api-reviewer, the frontend gets the app-reviewer.",
-    ],
+    bold: "Claude policing Claude.",
+    text: " Hooks check every file write against architectural rules and block violations.",
   },
-];
-
-const lessons = [
   {
     bold: "Structure beats volume.",
-    text: " A well-organized 200-line skill file is worth more than a 2,000-line knowledge dump. Claude works best when knowledge is modular and clearly scoped.",
-  },
-  {
-    bold: "Agents need constraints, not just capabilities.",
-    text: " The most impactful additions weren\u2019t new features\u2014they were guardrails. Regulatory checkpoints. Architecture enforcement. The rule that agents must read the law before writing code.",
+    text: " A 200-line skill file outperforms a 2,000-line knowledge dump.",
   },
   {
     bold: "Plugins are prompt engineering at scale.",
-    text: " You\u2019re not training a model. You\u2019re building a structured context that makes a general-purpose model behave like a domain expert. That\u2019s powerful and accessible\u2014anyone can do it.",
-  },
-];
-
-const researcherCapabilities = [
-  {
-    title: "Population-Level Impact Analysis",
-    paragraphs: [
-      "The analysis-tools plugin turns Claude into a microsimulation analyst. Point it at any tax or benefit reform and it runs population-level analysis using PolicyEngine\u2019s weighted survey data\u2014covering income, demographics, and household structure for the entire US population.",
-      "The result: cost estimates, revenue projections, and counts of who wins and who loses under a proposed change\u2014all generated from a plain-English description of a policy reform.",
-    ],
-  },
-  {
-    title: "Distributional and Inequality Analysis",
-    paragraphs: [
-      "Beyond aggregate numbers, Claude breaks down impacts by income decile, calculates changes to the Gini coefficient, and measures effects on poverty rates. You get the full distributional picture\u2014who bears the cost and who receives the benefit\u2014without writing a single line of analysis code.",
-    ],
-  },
-  {
-    title: "Congressional District Analysis",
-    paragraphs: [
-      "Using geographic microdata from HuggingFace datasets, Claude can map reform impacts to every congressional district. This turns abstract national estimates into localized numbers that matter for legislative strategy and constituent communication.",
-    ],
-  },
-  {
-    title: "Dashboards and Visualizations",
-    paragraphs: [
-      "Claude doesn\u2019t just compute numbers\u2014it builds interactive tools. Streamlit dashboards, Plotly charts, and household calculators that let stakeholders explore reform scenarios themselves. The analysis becomes a shareable, interactive product.",
-    ],
+    text: " You\u2019re building structured context, not training a model.",
   },
 ];
 
@@ -341,64 +296,23 @@ export const TimelineSection = () => {
         </div>
       </section>
 
-      {/* ===== WHAT RESEARCHERS CAN DO ===== */}
+      {/* ===== TAKEAWAYS ===== */}
       <section className="section">
         <div className="container">
           <AnimatedSection>
-            <h2>What Researchers Can Do</h2>
-            <p className="section-lead">
-              Beyond building the plugin, we focused on what policy researchers
-              actually need from an AI assistant. See our{" "}
-              <a
-                href="https://www.policyengine.org/us/research/multi-agent-ai-policy-workflows"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                multi-agent AI workflow post
-              </a>{" "}
-              for a deep dive into how these capabilities work in practice.
-            </p>
+            <h2>What Made It Work</h2>
           </AnimatedSection>
-
-          {researcherCapabilities.map((cap) => (
-            <AnimatedSection key={cap.title} className="idea-block">
-              <h3 className="spaced-sans">{cap.title}</h3>
-              {cap.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </AnimatedSection>
-          ))}
-        </div>
-      </section>
-
-      {/* ===== IDEAS + LESSONS ===== */}
-      <section className="section">
-        <div className="container">
-          <AnimatedSection>
-            <h2>The Ideas That Made It Work</h2>
-          </AnimatedSection>
-
-          {ideas.map((idea) => (
-            <AnimatedSection key={idea.title} className="idea-block">
-              <h3 className="spaced-sans">{idea.title}</h3>
-              {idea.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </AnimatedSection>
-          ))}
 
           <AnimatedSection>
-            <h2 style={{ marginTop: 48 }}>What We Learned</h2>
+            <div className="takeaway-grid">
+              {takeaways.map((t) => (
+                <div key={t.bold} className="takeaway-card">
+                  <strong>{t.bold}</strong>
+                  <span>{t.text}</span>
+                </div>
+              ))}
+            </div>
           </AnimatedSection>
-
-          {lessons.map((l) => (
-            <AnimatedSection key={l.bold} className="lesson">
-              <p>
-                <strong>{l.bold}</strong>
-                {l.text}
-              </p>
-            </AnimatedSection>
-          ))}
         </div>
       </section>
 
