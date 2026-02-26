@@ -6,6 +6,6 @@ export const PluginBlog = () => (
   <div className="pb">
     <HeroSection />
     <TimelineSection />
-    <footer className="footer">PolicyEngine &middot; Open Source</footer>
+
   </div>
 );

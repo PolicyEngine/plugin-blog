@@ -337,7 +337,7 @@ export const TimelineSection = () => {
               }}
             >
               <a
-                href="https://policyengine.org/us/claude-plugins"
+                href="https://policyengine.org/us/claude-plugin"
                 className="cta-button"
               >
                 See what it can do

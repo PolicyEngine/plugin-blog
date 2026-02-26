@@ -25,7 +25,7 @@ export const HeroSection = () => (
           </p>
           <p>
             <a
-              href="https://policyengine.org/us/claude-plugins"
+              href="https://policyengine.org/us/claude-plugin"
               style={{ textDecoration: "underline", fontWeight: 500 }}
             >
               See how you can use what we built &rarr;
